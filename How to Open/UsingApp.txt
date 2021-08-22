@@ -1,0 +1,6 @@
+Steps to open this app:
+1. Download the 'Expo Go' App on your mobile phone.
+2. Scan the QR code at this link - 
+    or, click on the link (using phone) and click on 'Open Using Expo Go'
+3. The app with load, and give you the welcome screen.
+4. The app has opened.
