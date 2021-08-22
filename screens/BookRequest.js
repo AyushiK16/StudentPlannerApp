@@ -168,6 +168,8 @@ export default class BookRequest extends React.Component{
     }
     render(){
             return(
+                <ScrollView contentContainerStyle={{flexGrow: 1}}
+  keyboardShouldPersistTaps='handled'>
                 <View style = {{flex : 1, backgroundColor: '#81B7B1'}}>
                     <MyHeader title = "Add Syllabus"
                     navigation = {this.props.navigation}/>
@@ -228,6 +230,7 @@ export default class BookRequest extends React.Component{
                     </KeyboardAvoidingView>
     
                 </View>
+                </ScrollView>
             )
           
     }

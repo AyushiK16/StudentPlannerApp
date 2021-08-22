@@ -4,8 +4,6 @@ import db from '../config';
 import {ListItem} from 'react-native-elements'
 import MyHeader from '../components/MyHeader'
 import {Avatar, Icon} from 'react-native-elements'
-
-//import SantaAnimation from '../components/Santa.js';
 import firebase from 'firebase';
 
 export default class BookDonate extends React.Component{

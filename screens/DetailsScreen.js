@@ -49,14 +49,7 @@ export default class DetailsScreen extends React.Component{
         })
     }
 
-    updateBookStatus(){
-        db.collection('AllDonations').add({
-            bookName : this.state.bookName,
-            requestId : this.state.requestId,
-            requestedBy : this.state.recieverName,
-            donarId : this.state.userId,
-            requestStatus : 'Donar Interested'})
-    }
+    
 
     deleteSyllabus(){
       db.collection('SyllabusAdds').doc(this.state.recieverDocId)
@@ -96,6 +89,7 @@ export default class DetailsScreen extends React.Component{
 
     render() {
       return (
+        <ScrollView>
         <View style={{ flex: 1 }}>
           <View style={{ flex: 0.1 }}>
             <Header
@@ -180,6 +174,7 @@ export default class DetailsScreen extends React.Component{
             </View>
           </View>
         </View>
+        </ScrollView>
       );
     }
   }

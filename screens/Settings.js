@@ -55,6 +55,9 @@ export default class Settings extends React.Component{
 
     render(){
         return(
+          <ScrollView contentContainerStyle={{flexGrow: 1}}
+  keyboardShouldPersistTaps='handled'>
+          
           <View style={{ flex: 1 }}>
             <View style={{ flex: 0.12 }}>
               <MyHeader title="Settings" navigation={this.props.navigation} />
@@ -122,6 +125,7 @@ export default class Settings extends React.Component{
                 </View>
               </View>
           </View>
+          </ScrollView>
         );
       }
     }
@@ -169,7 +173,7 @@ export default class Settings extends React.Component{
         shadowOpacity: 0.44,
         shadowRadius: 10.32,
         elevation: 16,
-        marginTop: RFValue(20),
+        marginTop: RFValue(10),
       },
       buttonView:{
         flex: 0.22,

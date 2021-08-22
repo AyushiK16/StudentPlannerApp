@@ -37,35 +37,20 @@ export default class AddReminders extends React.Component{
         var userId = this.state.userId
         var randomRequestId = this.createUniqueId();
         this.setState({randomRequestId : randomRequestId})
-        //var book = await BookSearch.searchbook(bookName, 'AIzaSyCLhVw_1amugkXzdsccCJbXahi7yb4vrgQ')
         db.collection('ReminderAdds').add({
-            //notificationStatus : 'unread',
             userId : userId,
             reminderDate : bookName,
             notificationStatus : 0,
             hello : 'hello',
             details : reason,
             requestId : randomRequestId,
-            //syllabusStatus : 'Upcoming',
             date : firebase.firestore.FieldValue.serverTimestamp(),
 
             
-            //imageLink : book.data[0].volumeInfo.imageLinks.smallThumbnail
         })
 
-        
-        //await this.getBookRequest()
-        console.log("after line 40", this.state.userId)
-        /*
-        db.collection('Users').where('emailId', '==', this.state.userId)
-        .get().then((data)=>{
-            data.forEach((doc)=>{
-                console.log("line 43")
-                db.collection('Users').doc(doc.id)
-                .update({isBookRequestActive : true})
-            })
-        })
-        */
+                console.log("after line 40", this.state.userId)
+       
         this.setState({
             bookName : '',
             reason : '',
@@ -76,50 +61,7 @@ export default class AddReminders extends React.Component{
 
 
 
-    /*
-    getBookRequest(){
-        db.collection('SyllabusAdds').where('userId', '==', this.state.userId)
-        .get()
-        .then((data)=>{
-            data.forEach((doc)=>{
-                if(doc.data().syllabusStatus !== 'Completed'){
-                    this.setState({
-                        requestId : doc.data().requestId,
-                        requestedSyllabusName : doc.data().bookName,
-                        requestedSyllabusStatus : doc.data().syllabusStatus,
-                        docId : doc.id,
-                        //requestedImageLink : doc.data().imageLink
-                    })
-                }
-            })
-        })
-    }    
-    */
 
-    /*
-    getIsBookRequestActive(){
-        db.collection('Users').where('emailId', '==', this.state.userId)
-        .onSnapshot((snap)=>{
-            snap.forEach((doc)=>{
-                this.setState({
-                    isBookRequestActive : doc.data().isBookRequestActive,
-                    userDocId : doc.id
-                })
-            })
-        })
-    }
-*/
-
-
-    /*
-    updateSyllabusStatus(){
-        db.collection('SyllabusAdds').doc(this.state.docId).update({
-            syllabusStatus : 'Recieved'
-        })
-        db.collection('Users').doc(this.state.userDocId)
-        .update({ isBookRequestActive : false})
-    }
-*/
     sendNotification(){
         db.collection('Users').where('emailId', '==', this.state.userId)
         .get().then((data)=>{
@@ -180,6 +122,8 @@ export default class AddReminders extends React.Component{
     }
     render(){
             return(
+                <ScrollView contentContainerStyle={{flexGrow: 1}}
+  keyboardShouldPersistTaps='handled'>
                 
                 <View style = {{flex : 1, backgroundColor: '#81B7B1'}}>
                     <MyHeader title = "Add Reminder"
@@ -191,7 +135,7 @@ export default class AddReminders extends React.Component{
                         <TextInput style = {styles.formTextInput}
                         placeholder = "Enter reminder date"
                         onChangeText = {(text)=>{
-                            this.getBooksFromAPI(text)
+                            //this.getBooksFromAPI(text)
                             
                         }}
                         value = {this.state.bookName}/>
@@ -240,66 +184,11 @@ export default class AddReminders extends React.Component{
     
                     </KeyboardAvoidingView>
                 </View>
+                </ScrollView>
             )
           
     }
-    /*
-    render(){
-            return(
-                <View style = {{flex : 1}}>
-                    <MyHeader title = "Add Syllabus"
-                    navigation = {this.props.navigation}/>
-                (
-
-                    <KeyboardAvoidingView style = {styles.keyBoardStyle}>
-                    <TextInput style = {styles.formTextInput}
-                    placeholder = "Enter subject name"
-                    value = {this.state.bookName}/>
-                    </KeyboardAvoidingView>
-
-                ):
-                (
-                <FlatList
-                    data =  {this.state.dataSource}
-                    renderItem = {this.renderItem}
-                    style = {{ marginTop: 10 }}
-                    keyExtractor = {(item,index)=>{
-                        return index.toString()
-                    }}
-                    />
-                )
-                (
-                <View style = {{alignItems : 'center'}}>
-                    <TextInput style = {styles.formTextInput}
-                        placeholder = "Enter details"
-                        multiline 
-                        numberOfLines = {20}
-                        onChangeText = {(text)=>{
-                            this.setState({
-                                reason : text
-                            })
-                            
-                        }}
-                        value = {this.state.reason}/>
     
-                    <TouchableOpacity style = {styles.button}
-                        onPress = {()=>{
-                            this.addRequest(this.state.bookName, this.state.reason)
-                        }}>
-                            <Text>Add</Text>
-    
-                    </TouchableOpacity>
-
-                        </View>
-                        
-                )
-                
-                
-                </View>
-            )
-        }
-        }    
-    //}*/
     }
 
 
